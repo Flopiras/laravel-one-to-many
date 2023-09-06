@@ -18,6 +18,7 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">Nome progetto</th>
+          <th scope="col">Categoria</th>
           <th scope="col">Creato il</th>
           <th scope="col">Ultima modifica</th>
           <th></th>
@@ -28,13 +29,14 @@
         <tr>
             <th scope="row">{{ $project->id }}</th>
           <td>{{ $project->title }}</td>
+          <td>@if($project->type_id) {{ $project->type->label }} @else -- @endif</td>
           <td>{{ $project->created_at }}</td>
           <td>{{ $project->updated_at }}</td>
           <td><a href="{{ route('admin.projects.show', $project)}}" class="btn btn-primary">Vedi</a></td>
         </tr>
           @empty
           <tr>
-            <td class="text-center" colspan="5">
+            <td class="text-center" colspan="6">
               <h3>Non ci sono progetti disponibili</h3>
             </td>
           </tr>
