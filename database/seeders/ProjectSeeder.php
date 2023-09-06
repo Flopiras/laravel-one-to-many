@@ -6,6 +6,7 @@ use App\Models\Project;
 use Faker\Generator;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProjectSeeder extends Seeder
@@ -15,12 +16,14 @@ class ProjectSeeder extends Seeder
      */
     public function run(Generator $faker): void
     {
-        for ($i = 1; $i <= 20; $i++) {
+        Storage::makeDirectory('project_images');
+        for ($i = 0; $i < 10; $i++) {
             $project = new Project();
 
             $project->title = $faker->text(20);
             $project->slug = Str::slug($project->title, '-');
             $project->content = $faker->paragraphs(15, true);
+            $project->image = Storage::putFile('project_images', $faker->image(storage_path('app/public/project_images'), 250, 250));
             $project->link = $faker->url();
 
             $project->save();
