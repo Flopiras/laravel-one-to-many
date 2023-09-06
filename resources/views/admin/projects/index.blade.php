@@ -29,7 +29,7 @@
         <tr>
             <th scope="row">{{ $project->id }}</th>
           <td>{{ $project->title }}</td>
-          <td>@if($project->type_id) {{ $project->type->label }} @else -- @endif</td>
+          <td> @if($project->type_id) <span class="badge" style="background-color: {{ $project->type->color }}">{{ $project->type->label }} </span>@else -- @endif </td>
           <td>{{ $project->created_at }}</td>
           <td>{{ $project->updated_at }}</td>
           <td><a href="{{ route('admin.projects.show', $project)}}" class="btn btn-primary">Vedi</a></td>
