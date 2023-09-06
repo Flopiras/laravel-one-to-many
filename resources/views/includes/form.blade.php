@@ -15,7 +15,7 @@
     <div class="row">
 
         {{-- title --}}
-        <div class="col-12">
+        <div class="col-7">
             <div class="mb-3">
                 <label for="title" class="form-label fw-bold">Titolo</label>
                 <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="title" maxlength="50" placeholder="Inserisci un titolo" value="{{ old('title', $project->title) }}" required>
@@ -29,6 +29,19 @@
             </div>
             
         </div>
+
+        {{-- type --}}
+        <div class="col-4">
+            <div class="mb-3">
+                <label for="type" class="form-label fw-bold">Categoria</label>
+                <select class="form-select @error('type_id') is-invalid @enderror" id="type" name="type_id">
+                    <option>--</option>
+                    @foreach($types as $type)
+                    <option @if(old('type_id', $project->type_id) == $type->id) selected @endif value="{{ $type->id }}">{{ $type->label }}</option>
+                    @endforeach
+                </select>
+            </div>
+     </div>
         
         {{-- content --}}
         <div class="col-12">
