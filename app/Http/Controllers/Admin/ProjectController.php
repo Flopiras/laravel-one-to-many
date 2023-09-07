@@ -43,13 +43,15 @@ class ProjectController extends Controller
                 'content' => 'nullable|string',
                 'image' => 'nullable|image',
                 'url' => 'nullable|url',
+                'type_id' => 'nullable|exists:types, id'
             ],
             [
                 'title.required' => 'Il titolo è obbligatorio',
                 'title.unique' => 'Questo titolo esiste già',
                 'title.max:50' => 'Il titolo non può essere più lungo di 50 caratteri',
                 'url.url' => "L'Url deve essere un link valido",
-                'image.image' => "Il file non è valido"
+                'image.image' => "Il file non è valido",
+                'type_id.exists' => 'Il tipo non è valido'
             ]
         );
 
@@ -57,7 +59,7 @@ class ProjectController extends Controller
         $project = new project();
 
         if (array_key_exists('image', $data)) {
-            $img_url = Storage::putFile('projects_images', $data['image']);
+            $img_url = Storage::putFile('project_images', $data['image']);
 
             $data['image'] = $img_url;
         }
@@ -101,13 +103,15 @@ class ProjectController extends Controller
                 'content' => 'nullable|string',
                 'image' => 'nullable|image',
                 'url' => 'nullable|url',
+                'type_id' => 'nullable|exists:types, id'
             ],
             [
                 'title.required' => 'Il titolo è obbligatorio',
                 'title.unique' => 'Questo titolo esiste già',
                 'title.max:50' => 'Il titolo non può essere più lungo di 50 caratteri',
                 'url.url' => "L'Url deve essere un link valido",
-                'image.image' => "Il file non è valido"
+                'image.image' => "Il file non è valido",
+                'type_id.exists' => 'Il tipo non è valido'
             ]
         );
 
@@ -116,7 +120,7 @@ class ProjectController extends Controller
 
         if (array_key_exists('image', $data)) {
             if ($project->image) Storage::delete($project->image);
-            $img_url = Storage::putFile('projects_images', $data['image']);
+            $img_url = Storage::putFile('project_images', $data['image']);
 
             $data['image'] = $img_url;
         }
