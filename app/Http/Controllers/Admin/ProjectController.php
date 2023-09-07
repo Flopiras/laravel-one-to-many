@@ -43,7 +43,7 @@ class ProjectController extends Controller
                 'content' => 'nullable|string',
                 'image' => 'nullable|image',
                 'url' => 'nullable|url',
-                'type_id' => 'nullable|exists:types, id'
+                'type_id' => 'nullable|exists:types,id'
             ],
             [
                 'title.required' => 'Il titolo è obbligatorio',
@@ -103,7 +103,7 @@ class ProjectController extends Controller
                 'content' => 'nullable|string',
                 'image' => 'nullable|image',
                 'url' => 'nullable|url',
-                'type_id' => 'nullable|exists:types, id'
+                'type_id' => 'nullable|exists:types,id'
             ],
             [
                 'title.required' => 'Il titolo è obbligatorio',
