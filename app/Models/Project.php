@@ -11,7 +11,7 @@ class Project extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['title', 'slug', 'image', 'content', 'link'];
+    protected $fillable = ['title', 'slug', 'image', 'content', 'link', 'type_id'];
 
     public function getAbstract()
     {
