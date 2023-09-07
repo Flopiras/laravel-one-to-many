@@ -16,7 +16,7 @@
       <div class="col-md-8">
         <div class="card-body">
           {{-- category --}}
-          <h6 class="text-end my-3"><small class="text-body-secondary"><strong>Categoria :</strong> {{ $project->type->label }}</small></h6>
+          <h6 class="text-end my-3"><small class="text-body-secondary"><strong>Categoria :</strong> @if($project->type_id) {{ $project->type->label }} @endif</small></h6>
           <h5 class="card-title">{{ $project->title }}</h5>
           <p class="card-text">{{ $project->content }}</p>
           <p class="card-text"><small class="text-body-secondary">Update : {{ $project->updated_at }}</small></p>
